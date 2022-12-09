@@ -40,6 +40,10 @@ export const schemas = {
       username,
     })
     .options({ abortEarly: false }),
+  editProfileSchema: Joi.object().keys({
+    firstname: Joi.string().empty(""),
+    lastname: Joi.string().empty(""),
+  }),
 };
 
 export const validateBody = (schema: Schema) => {

@@ -9,9 +9,9 @@ import { schemas, validateBody } from "@/validations/validations";
 
 const router = Router({ mergeParams: true });
 
-//@route POST /api/register
+// @route POST /api/v1/auth/register
 router.post(
-  "/register",
+  "/v1/auth/register",
   validateBody(schemas.registerSchema),
   (req, res, next) => {
     passport.authenticate("local-register", (err, user, info) => {
@@ -37,9 +37,9 @@ router.post(
   }
 );
 
-//@route POST /api/login
+// @route POST /api/v1/auth/login
 router.post(
-  "/login",
+  "/v1/auth/login",
   validateBody(schemas.loginSchema),
   (req: Request, res: Response, next: NextFunction) => {
     console.log("FIREED");
@@ -70,8 +70,8 @@ router.post(
   }
 );
 
-//@route DELETE /api/logout
-router.delete("/logout", (req, res) => {
+// @route DELETE /api/v1/auth/logout
+router.delete("/v1/auth/logout", (req, res) => {
   req.logOut((err) => {
     if (err) {
       return res.status(422).send(
@@ -86,9 +86,9 @@ router.delete("/logout", (req, res) => {
   });
 });
 
-//@route GET /api/checkSession
+// @route GET /api/v1/auth/check-session
 // Check if user session exists
-router.get("/check-session", (req, res, next) => {
+router.get("/v1/auth/check-session", (req, res, next) => {
   if (req.isAuthenticated()) {
     const user = sessionizeUser(req.user);
     res

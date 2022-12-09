@@ -21,6 +21,8 @@ export interface IUser extends Document {
   fullname?: string;
   dateJoined: string | Date;
 
+  isOwnProfile?: boolean;
+
   toUserJSON(): IUser;
   toProfileJSON(): IUser;
   passwordMatch(pw: string, callback: (error: any, match: any) => void): void;
