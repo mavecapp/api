@@ -31,7 +31,7 @@ export default {
       secure: env !== "dev",
       sameSite: env === "dev" ? "strict" : "none",
       httpOnly: env !== "dev",
-    }, //14 days expiration
+    }, // 14 days expiration
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
       collection: "session",
